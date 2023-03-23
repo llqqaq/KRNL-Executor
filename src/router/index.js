@@ -24,6 +24,11 @@ const routes = [
     component: () => import('@/views/Iframe')
   },
   {
+    path: '/iframeB',
+    name: 'IframeB',
+    component: () => import('@/views/IframeB')
+  },
+  {
     path: '/all-fun',
     name: 'AllFun',
     component: () => import('@/views/All')

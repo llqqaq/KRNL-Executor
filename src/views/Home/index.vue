@@ -2,7 +2,7 @@
   <div class="home">
     <nav>
       <router-link :to="{ name: 'LargeFileSlice' }">大文件切片上传</router-link>
-      <router-link to="/iframe">iframe传值</router-link>
+      <router-link to="/iframe">iframe传值（侵入式）</router-link>
       <router-link to="/all-fun">所有功能（上传/缩略/切片）</router-link>
     </nav>
   </div>

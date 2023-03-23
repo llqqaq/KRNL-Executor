@@ -1,68 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        div {
-            height: 2000px;
-            width: 100%;
-            background-color: skyblue;
-        }
-        *{
-            padding: 0;
-            margin: 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iframe</title>
+  <style>
+    html {
+      height: 100%;
+    }
+  </style>
 </head>
+
 <body>
-    <div>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-        <p>1</p>
-    </div>
+  <div>
+    这是不同域iframe页面
+    <span></span><br><br>
+
+    <button onclick="transferParent()">子給父传值</button><br><br>
+    <button onclick="handleParentDom()">不同域操作父级的子元素</button>(跨域问题)
+  </div>
 </body>
+
 </html>
 <script>
-    alert(`屏幕${window.screen.width}/${window.screen.height}`)
-    alert(`可视${window.screen.availWidth}/${window.screen.availHeight}`)
-    alert(`body${document.body.clientWidth}/${document.body.clientHeight}`)
-    alert(`网页${document.body.scrollWidth}/${document.body.scrollHeight}`)
+  // 监听
+  window.addEventListener('message', function (event) {
+    console.log('子页面接受到的值', event.data.value)
+  })
+  // 给parent传值
+  function transferParent () {
+    const data = {
+      type: 'fromChild',
+      value: 'fromChild'
+    }
+    window.parent.postMessage(data, '*')
+  }
+  // 操作父级子元素
+  function handleParentDom () {
+    console.log(window.parent.document)
+  }
 </script>
